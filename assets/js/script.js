@@ -60,7 +60,7 @@ function gameOver(gameWon)  {
     for (let i = 0; i < cells.length; i++) {
         cells[i].removeEventListener('click', turnClick, false)
     }
-    declareWinner(gameWon.Player == huPlayer ? "You win!" : "You lose!");
+    declareWinner(gameWon.player == huPlayer ? "You win!" : "You lose!");
 }
 
 function declareWinner(who) {
@@ -78,7 +78,7 @@ function bestSpot() {
 
 function checkTie() {
     if (emptySquares().length == 0) {
-        for (var i = 0; i < cells.length; i++) {
+        for (let i = 0; i < cells.length; i++) {
             cells[i].style.backgroundColor = "green";
             cells[i].removeEventListener('click', turnClick, false);
         }
