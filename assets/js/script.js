@@ -25,7 +25,8 @@ let cells = document.getElementsByClassName('cell');
 /** Calling function to start the game */
 startGame();
 
-/** Determine function to start the game 
+/** 
+ * Determine function to start the game 
  * Stablish behivor to "replay" button at end of each game
  * Load values from winWays array to origBoard variable
  * The for loop restart the grid to play again
@@ -40,7 +41,7 @@ function startGame() {
     }
 }
 
-/**  */
+/** Identify the id of the square when cliked */
 function turnClick(square) {
 	if (typeof origBoard[square.target.id] == 'number') {
 		turn(square.target.id, huPlayer)
@@ -48,13 +49,23 @@ function turnClick(square) {
     }
 }
 
+/** 
+ * Insert the player selection to the grid
+ * checkWin seeks if a winning combination from the array happened
+ * Stablish the end of the game
+ */
 function turn(squareId, player) {
     origBoard[squareId] = player;
     document.getElementById(squareId).innerText = player;
     let gameWon = checkWin(origBoard, player)
     if (gameWon) gameOver(gameWon)
 }
-
+/**
+ * the function find places in the board where the user had already played
+ * reduce "a"dd "i"ndexes to an empty array to be filled with "e"lements in the board
+ * The for loop verify if any value in winComb array matches
+ * if the winCombo array matches, gameWon sets combination and player
+ */
 function checkWin(board, player) {
     let plays = board.reduce((a, e, i) =>
       (e === player) ? a.concat(i) : a, []);
@@ -68,6 +79,11 @@ function checkWin(board, player) {
     return gameWon;
 }
 
+/**
+ * first loop sets color to the winning combination
+ * second loop cuts the option to keep cliking cells
+ * declares winning statement at end of the game 
+ */
 function gameOver(gameWon)  {
     for (let index of winWays [gameWon.index]) {
         document.getElementById(index).style.backgroundColor =
@@ -76,7 +92,7 @@ function gameOver(gameWon)  {
     for (let i = 0; i < cells.length; i++) {
         cells[i].removeEventListener('click', turnClick, false)
     }
-    declareWinner(gameWon.player == huPlayer ? "You win!" : "Computer Wins");
+    declareWinner(gameWon.player == huPlayer ? "You Win!" : "AI Wins");
 }
 
 function declareWinner(who) {
