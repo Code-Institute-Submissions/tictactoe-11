@@ -1,6 +1,14 @@
+/**
+ * Variables to be used to play the game
+ */
+
 let origBoard;
-let huPlayer = 'O';
-let comPlayer = 'X';    
+let huPlayer = 'X';
+let comPlayer = 'O';    
+
+/**
+ * Array to determine winning combinations on the board cells
+ */
 let winWays = [
     [0, 1, 2],
     [3, 4, 5],
@@ -26,10 +34,10 @@ function startGame() {
 }
 
 function turnClick(square) {
-   if (typeof origBoard[square.target.id] == 'number') {
-    turn(square.target.id, huPlayer)
-    if (!checkTie()) turn(bestSpot(), comPlayer);
-   }     
+	if (typeof origBoard[square.target.id] == 'number') {
+		turn(square.target.id, huPlayer)
+		if (!checkWin(origBoard, huPlayer) && !checkTie()) turn(bestSpot(), comPlayer);
+    }
 }
 
 function turn(squareId, player) {
@@ -60,7 +68,7 @@ function gameOver(gameWon)  {
     for (let i = 0; i < cells.length; i++) {
         cells[i].removeEventListener('click', turnClick, false)
     }
-    declareWinner(gameWon.player == huPlayer ? "You win!" : "You lose!");
+    declareWinner(gameWon.player == huPlayer ? "You win!" : "Computer Wins");
 }
 
 function declareWinner(who) {
@@ -82,7 +90,10 @@ function checkTie() {
             cells[i].style.backgroundColor = "green";
             cells[i].removeEventListener('click', turnClick, false);
         }
-        declareWinner("Play Again!?")
+        declareWinner(`
+        Draw! 
+        Play Again!?
+        `)
         return true;
     }
    return false;

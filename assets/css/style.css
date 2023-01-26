@@ -43,9 +43,8 @@ td {
 table {
     border-collapse: collapse;
     position: relative;
-    left: 50%;
-    margin-left: -155px;
-    top: 50px;
+    margin: 15% auto 5% auto;
+    
 }
 
 table tr:first-child td {
@@ -68,7 +67,7 @@ table tr td:last-child {
     display: none;
     width: 200px;
     top: 120px;
-    background-color: rgba(237, 237, 32, 0.4);
+    background-color: #7e71c7;;
     position: absolute;
     left: 50%;
     margin-left: -100px;
@@ -81,9 +80,6 @@ table tr td:last-child {
 
 .explain {
     display: block;
-}
-
-.scores {
     display: inline-block;
     padding: 10px;
     margin: 5px auto;
