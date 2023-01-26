@@ -41,7 +41,11 @@ function startGame() {
     }
 }
 
-/** Identify the id of the square when cliked */
+/** 
+ * first if allow only play on cells where there are numbers
+ * turn lets the player to select a square
+ * second if let AI play after checking the game is not Draw
+ */
 function turnClick(square) {
 	if (typeof origBoard[square.target.id] == 'number') {
 		turn(square.target.id, huPlayer)
@@ -95,11 +99,19 @@ function gameOver(gameWon)  {
     declareWinner(gameWon.player == huPlayer ? "You Win!" : "AI Wins");
 }
 
+/**
+ * uses "who" to declare winner according to whom
+ * made the first combination made 
+ */
 function declareWinner(who) {
     document.getElementById("endgame").style.display = "block";
     document.getElementById("text").innerText = who;
 }
 
+
+/**
+ * finds the first space that is not empty
+ */
 function emptySquares() {
     return origBoard.filter(s => typeof s == 'number');
 }
@@ -108,6 +120,9 @@ function bestSpot() {
     return emptySquares()[0];
 }
 
+/**
+ * looks if there are no more available cells to play
+ */
 function checkTie() {
     if (emptySquares().length == 0) {
         for (let i = 0; i < cells.length; i++) {
