@@ -1,5 +1,5 @@
 let origBoard;
-let human = 'O';
+let huPlayer = 'O';
 let comPlayer = 'X';
 let winWays = [
     [0, 1, 2],
@@ -16,7 +16,7 @@ let cells = document.getElementsByClassName('cell');
 startGame();
 
 function startGame() {
-    document.getElementByClassName('endgame').style.display = "none";
+    document.getElementById('endgame').style.display = "none";
     origBoard = Array.from(Array(9).keys());
     for (let i = 0; i < cells.length; i++) {
         cells[i].innerText = '';
@@ -27,4 +27,34 @@ function startGame() {
 
 function turnClick(square) {
     turn(square.target.id, huPlayer)
+}
+
+function turn(squareId, player) {
+    origBoard[squareId] = player;
+    document.getElementById(squareId).innerText = player;
+    let gameWon = checkWin(origBoard, player)
+    if (gameWon) gameOver(gameWon)
+}
+
+function checkWin(board, player) {
+    let plays = board.reduce((a, e, i) =>
+      (e === player) ? a.concat(i) : a, []);
+    let gameWon = null;
+    for (let [index, win] of winWays.entries()) {
+        if (win.every(elem => plays.indexOf(elem) > -1)) {
+            gameWon = {index: index, player: player};
+            break;
+        }
+    }
+    return gameWon;
+}
+
+function gameOver(gameWon)  {
+    for (let index of winWays [gameWon.index]) {
+        document.getElementById(index).style.backgroundColor =
+        gameWon.player == huPlayer ? "blue" : "red";
+    }
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].removeEventListener('click', turnClick, false)
+    }
 }
