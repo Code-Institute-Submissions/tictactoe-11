@@ -79,9 +79,29 @@ table tr td:last-child {
 /* text area below the table Area */
 .explain {
     display: block;
-    display: inline-block;
     padding: 10px;
     margin: 5px auto;
     width: 60%;
+    height: 75px;
     font-size: 1.2rem;
+}
+/* Score Area*/
+.score-area {
+    margin: 0 auto;
+    width: 20%;
+    font-size: 1.2rem;
+    display: inline-block;
+
+}
+#score {
+    color: blue;
+    font-weight: bold;
+}
+#incorrect {
+    color: red;
+    font-weight: bold;
+}
+.scores {
+    display: inline-block;
+    padding: 0px;
 }

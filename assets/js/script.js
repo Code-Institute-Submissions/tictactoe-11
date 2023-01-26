@@ -84,14 +84,19 @@ function checkWin(board, player) {
 }
 
 /**
- * first loop sets color to the winning combination
+ * first loop sets color to the winning combination and calls increment function
  * second loop cuts the option to keep cliking cells
  * declares winning statement at end of the game 
  */
 function gameOver(gameWon)  {
     for (let index of winWays [gameWon.index]) {
-        document.getElementById(index).style.backgroundColor =
-        gameWon.player == huPlayer ? "blue" : "red";
+        if (gameWon.player == huPlayer) {
+        document.getElementById(index).style.backgroundColor = "blue";
+        incrementHuman();
+         } else {
+        document.getElementById(index).style.backgroundColor = "red";
+        incrementAI();
+    } 
     }
     for (let i = 0; i < cells.length; i++) {
         cells[i].removeEventListener('click', turnClick, false)
@@ -107,7 +112,6 @@ function declareWinner(who) {
     document.getElementById("endgame").style.display = "block";
     document.getElementById("text").innerText = who;
 }
-
 
 /**
  * finds the first space that is not empty
@@ -136,4 +140,22 @@ function checkTie() {
         return true;
     }
    return false;
+}
+
+/**
+ * Gets the current score from the DOM and increments it by 1
+ */
+function incrementHuman() {
+
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    document.getElementById("score").innerText = ++oldScore;
+}
+
+/**
+ *  Gets the current score from the DOM and increments it by 1
+ */
+function incrementAI() {
+
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText = ++oldScore;    
 }
