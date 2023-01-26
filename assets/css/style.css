@@ -1,19 +1,33 @@
-/* Shaping the table*/
+/* --------- Global style */
 
+body {
+    background-color: rgba(77, 41, 162, 0.813);
+    font-family: "Raleway", sans-serif;
+    color: #fff;
+    text-align: center;
+}
+
+/*  Heading */
+.heading {
+    text-align: center;
+    font-size: 2.5rem;
+    height: 50px;
+}
+
+/* Shaping the table*/
 td {
-    border: 2px solid #333;
+    border: 6px solid rgb(68, 182, 205);
     height: 100px;
     width: 100px;
     text-align: center;
     vertical-align: middle;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 70px;
+    font-size: 90px;
     cursor: pointer;
 }
 
 table {
     border-collapse: collapse;
-    position: absolute;
+    position: relative;
     left: 50%;
     margin-left: -155px;
     top: 50px;

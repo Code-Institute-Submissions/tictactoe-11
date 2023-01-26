@@ -1,6 +1,6 @@
 let origBoard;
 let huPlayer = 'O';
-let comPlayer = 'X';
+let comPlayer = 'X';    
 let winWays = [
     [0, 1, 2],
     [3, 4, 5],
