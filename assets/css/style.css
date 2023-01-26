@@ -1,9 +1,9 @@
 /* --------- Global style */
 
 body {
-    background-color: rgba(77, 41, 162, 0.813);
+    background-color: rgba(202, 193, 221, 0.813);
     font-family: "Raleway", sans-serif;
-    color: #fff;
+    color: rgb(68, 182, 205);
     text-align: center;
 }
 
@@ -12,7 +12,22 @@ body {
     text-align: center;
     font-size: 2.5rem;
     height: 50px;
+    background-color: #7e71c7;
 }
+/* Gaming Area */
+.game-area {
+    background-color: #E6ECF0;
+    box-sizing: border-box;
+    width: 85%;
+    height: 65vh;
+    max-height: 450px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
+    border-radius: 50%;
+}
+
 
 /* Shaping the table*/
 td {
@@ -53,7 +68,7 @@ table tr td:last-child {
     display: none;
     width: 200px;
     top: 120px;
-    background-color: rgba(205, 44, 91, 0.4);
+    background-color: rgba(237, 237, 32, 0.4);
     position: absolute;
     left: 50%;
     margin-left: -100px;
@@ -61,6 +76,17 @@ table tr td:last-child {
     padding-bottom: 50px;
     text-align: center;
     border-radius: 5px;
-    color: #ffffff;
     font-size: 2em;
+}
+
+.explain {
+    display: block;
+}
+
+.scores {
+    display: inline-block;
+    padding: 10px;
+    margin: 5px auto;
+    width: 60%;
+    font-size: 1.2rem;
 }
