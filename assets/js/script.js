@@ -26,7 +26,10 @@ function startGame() {
 }
 
 function turnClick(square) {
+   if (typeof origBoard[square.target.id] == 'number') {
     turn(square.target.id, huPlayer)
+    if (!checkTie()) turn(bestSpot(), aiPlayer);
+   }     
 }
 
 function turn(squareId, player) {
@@ -57,4 +60,24 @@ function gameOver(gameWon)  {
     for (let i = 0; i < cells.length; i++) {
         cells[i].removeEventListener('click', turnClick, false)
     }
+}
+
+function emptySquares() {
+    return origBoard.filter(s => typeof s == 'number');
+}
+
+function bestSpot() {
+    return emptySquares()[0];
+}
+
+function checkTie() {
+    if (emptySquares().length == 0) {
+        for (var i = 0; i < cells.length; i++) {
+            cells[i].style.backgroundColor = "green";
+            cells[i].removeEventListener('click', turnClick, false);
+        }
+        declareWinner("Tie Game")
+        return true;
+    }
+   return false;
 }
