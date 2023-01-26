@@ -1,5 +1,4 @@
 /* --------- Global style */
-
 body {
     background-color: rgba(202, 193, 221, 0.813);
     font-family: "Raleway", sans-serif;
@@ -31,7 +30,7 @@ body {
 
 /* Shaping the table*/
 td {
-    border: 6px solid rgb(68, 182, 205);
+    border: 3px solid rgb(68, 182, 205);
     height: 100px;
     width: 100px;
     text-align: center;
@@ -41,10 +40,8 @@ td {
 }
 
 table {
-    border-collapse: collapse;
     position: relative;
-    margin: 15% auto 5% auto;
-    
+    margin: 15% auto 15% auto;    
 }
 
 table tr:first-child td {
@@ -63,6 +60,7 @@ table tr td:last-child {
     border-right: 0;
 }
 
+/* End game message */
 #endgame {
     display: none;
     width: 200px;
@@ -78,6 +76,7 @@ table tr td:last-child {
     font-size: 2em;
 }
 
+/* text area below the table Area */
 .explain {
     display: block;
     display: inline-block;

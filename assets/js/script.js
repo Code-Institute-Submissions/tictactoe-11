@@ -7,7 +7,7 @@ let huPlayer = 'X';
 let comPlayer = 'O';    
 
 /**
- * Array to determine winning combinations on the board cells
+ * Array containing arrays to determine winning combinations on the board cells
  */
 let winWays = [
     [0, 1, 2],
@@ -21,8 +21,15 @@ let winWays = [
 ]
 
 let cells = document.getElementsByClassName('cell');
+
+/** Calling function to start the game */
 startGame();
 
+/** Determine function to start the game 
+ * Stablish behivor to "replay" button at end of each game
+ * Load values from winWays array to origBoard variable
+ * The for loop restart the grid to play again
+*/
 function startGame() {
     document.getElementById('endgame').style.display = "none";
     origBoard = Array.from(Array(9).keys());
@@ -33,6 +40,7 @@ function startGame() {
     }
 }
 
+/**  */
 function turnClick(square) {
 	if (typeof origBoard[square.target.id] == 'number') {
 		turn(square.target.id, huPlayer)
